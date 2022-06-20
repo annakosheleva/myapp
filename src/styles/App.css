@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: lightgray;
 }
 
 #root {
@@ -11,13 +10,17 @@
 }
 
 .App {
-    width: 800px;
+    width: 1200px;
+    display: flex;
+}
+
+.chatlist {
+    display: flex;
 }
 
 .message {
-    display: flex;
+    
     padding: 15px;
-    border: 2px solid darkblue;
     margin-top: 15px;
     justify-content: space-between;
     align-items: center;

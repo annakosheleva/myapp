@@ -1,15 +1,26 @@
-import React, {useState} from "react";
+import * as React from 'react';
 import "./styles/App.css";
 import MessageList from './components/MessageList';
 import MessageForm from "./components/MessageForm";
+import ChatList from "./components/ChatList"
+import { teal } from '@mui/material/colors';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+import { useState } from 'react';
 
+const theme = createTheme({
+	palette: {
+		primary: {
+			main: teal[700]
+		},
+	},
+});
 
 function App() {
 	const [messages, setMessages] = useState([
 		{ id: 1, author: 'Ann', text: 'Hello)' },
-		{ id: 2, author: 'Mark', text: 'Hi! How are you?' },
-		{ id: 3, author: 'Lisa', text: 'Hi, all..' },
+		{ id: 2, author: 'Mark', text: 'Morning' },
+		{ id: 3, author: 'Kris', text: 'Hi, all..' },
 	])
 
 	const createMessage = (newMessage) => {
@@ -21,16 +32,20 @@ function App() {
 	}
 	
 	return (
-		<div className="App">
-			<MessageForm create={createMessage} />
-			{messages.length !== 0
+		<ThemeProvider theme={theme}>
+			<div className="App">
+			<ChatList />
+			<div>
+				<MessageForm create={createMessage} />
+				{messages.length !== 0
 				?
-				<MessageList remove={removeMessage} messages={messages} title='List of messages' />
+				<MessageList remove={removeMessage} messages={messages} title='Messages' />
 				:
 				<h1 style={{ textAlign: 'center' }}>No messages</h1>
-			}
-			
+				}
+			</div>
 		</div>
+		</ThemeProvider>
 	);
 }
 
