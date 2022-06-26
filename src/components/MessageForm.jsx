@@ -26,7 +26,7 @@ const MessageForm = ({create}) => {
 		<div>
 			<Box component="form"
 				sx={{
-					m: 1, border: '2px solid gray', borderRadius: '10px', gap: '10px', width: '400px', height: '280px', margin: '10px', padding: '15px', backgroundColor: '#e9e9e9'
+					m: 1, border: '2px solid gray', borderRadius: '10px', gap: '10px', width: '400px', minHeight: '280px', margin: '10px', padding: '15px', backgroundColor: '#e9e9e9'
 				}}
 				noValidate
 				avtoComplete='off'
