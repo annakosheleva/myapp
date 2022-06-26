@@ -46,6 +46,11 @@ const HomePage = () => {
                     Profile
                 </Typography>
             </Link>
+            <Link to={'/count'}>
+                <Typography variant="h4" component="div" color="primary">
+                    Count
+                </Typography>
+            </Link>
             </div>
 			<div className="App">
 				<MessageForm create={createMessage} />

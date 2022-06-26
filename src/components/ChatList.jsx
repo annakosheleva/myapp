@@ -11,7 +11,7 @@ const ChatList = ({ name }) => {
             <ListItem disablePadding>
             <ListItemButton>
                 <ListItemAvatar><Avatar><FolderIcon /></Avatar></ListItemAvatar>
-                <ListItemText primary={name}/>
+                <ListItemText primary={name} />
             </ListItemButton>
             </ListItem>         
   );

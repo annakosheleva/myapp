@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import ChatPage from './pages/ChatPage';
 import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
+import CountPage from './pages/CountPage'
 
 function App() {
 	
@@ -14,6 +15,7 @@ function App() {
 			<Route path={'/'} element={<HomePage />} />
 			<Route path={'/chats'} element={<ChatPage />} />
 			<Route path={'/profile'} element={<ProfilePage />} />
+			<Route path={'/count'} element={<CountPage />} />
 			<Route path={'*'} element={<NotFoundPage/>} />
 		</Routes>
 		

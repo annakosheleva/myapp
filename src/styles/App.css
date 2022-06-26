@@ -10,11 +10,16 @@
 }
 
 .App {
-    width: 1200px;
+    max-width: 1200px;
     display: flex;
 }
 
 .chatlist {
+    max-width: 1200px;
+    display: flex;
+}
+
+.chats {
     display: flex;
 }
 

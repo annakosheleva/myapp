@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { teal } from '@mui/material/colors';
 import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { useState } from 'react';
 
 const theme = createTheme({
@@ -17,12 +19,29 @@ const theme = createTheme({
 });
 
 const ChatPage = () => {
-    const [chatlist] = useState([
-		{ name: "Some chat", id: "1" },
+    const [chatlist, setChatlist] = useState([
+		{ name: "Mom, Dad, ..", id: "1" },
 		{ name: "Work chat", id: "2" },
 		{ name: "Other", id: "3" }
 		
-	])
+    ])
+
+    const [name, setName] = useState('');
+
+    const addNewChat = () => {
+		const newChat = {
+            name: name,
+            id: Date.now()
+		}
+        setChatlist(prevState => [...prevState, newChat])
+        setName('')
+	}
+    
+    const deleteHandler = (id) => {
+        const filteredItems = chatlist.filter((item) => item.id !== id);
+        setChatlist(filteredItems);
+    }
+
     return (
         <>
             <ThemeProvider theme={theme}>
@@ -39,25 +58,59 @@ const ChatPage = () => {
                 <Typography variant="h4" component="div" color="primary">
                     Profile
                 </Typography>
+                    </Link>
+                    <Link to={'/count'}>
+                <Typography variant="h4" component="div" color="primary">
+                    Count
+                </Typography>
             </Link>
         </div>
             <div className='chatlist'>
 				<Box component="form"
 				sx={{
-					m: 1, border: '2px solid gray', borderRadius: '10px', gap: '10px', width: '400px', height: '280px', margin: '10px', padding: '15px', backgroundColor: '#e9e9e9'
+					m: 1, border: '2px solid gray', borderRadius: '10px', gap: '10px', width: '400px', minHeight: '280px', margin: '10px', padding: '15px', backgroundColor: '#e9e9e9'
 				}}
 				noValidate
 				avtoComplete='off'
 				>
                 <Typography variant="h5" component="div" color="primary">Chat list</Typography>
-                <List sx={{ margin: '10px 0 10px 0', width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                <List sx={{ margin: '10px 0 10px 0', width: '100%', maxWidth: 360, color: 'black', backgroundColor: '#fff'}}>
 					{chatlist.map(item => {
-						return (
-							<ChatList name={item.name} key={item.id} />
+                        return (
+                            <div className='chats'>
+                            <ChatList name={item.name} key={item.id} />
+                                <Button sx={{ margin: '10px 20px 10px 0' }} variant="contained" size="small"
+                                onClick={() => deleteHandler(item.id)}
+                                >X</Button></div>
+                            
 						)
 					})}
-				</List>
-				</Box>
+                        </List>
+                        
+                    </Box>
+
+
+                    <Box component="form"
+				sx={{
+					m: 1, border: '2px solid gray', borderRadius: '10px', gap: '10px', width: '400px', minHeight: '280px', margin: '10px', padding: '15px', backgroundColor: '#e9e9e9'
+				}}
+				noValidate
+				avtoComplete='off'
+			>
+				<Typography variant="h5" component="div" color="primary">Chat form</Typography>
+				<TextField sx={{ margin: '10px 0 10px 0', color: 'black', backgroundColor: '#fff' }}
+					id="outlined-multiline-flexible" fullWidth
+					label="Write text"
+					multiline
+					maxRows={4}
+					value={name}
+					// inputRef={inputRef}
+					onChange={(e) => setName(e.target.value)}
+				/>
+                        <Button sx={{ margin: '10px 0 10px 0' }} variant="contained" size="large" fullWidth
+                        onClick={addNewChat}
+                        >Add chat</Button>
+			</Box>
                 </div>
                 </ThemeProvider>
         </>

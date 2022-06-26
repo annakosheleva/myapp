@@ -29,6 +29,11 @@ const ProfilePage = () => {
                 <Typography variant="h4" component="div" color="primary">
                     Profile
                 </Typography>
+            <Link to={'/count'}>
+                <Typography variant="h4" component="div" color="primary">
+                    Count
+                </Typography>
+            </Link>
             </div>
             </ThemeProvider>
     )
