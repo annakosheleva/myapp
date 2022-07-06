@@ -8,13 +8,18 @@ const initialState = {
 			chatId: 1,
 		},
 		{
+			id: 4,
+			title: "how are you?",
+			chatId: 1,
+		},
+		{
 			id: 2,
 			title: "ok",
 			chatId: 2,
 		},
 		{
 			id: 3,
-			title: "opp",
+			title: "morning",
 			chatId: 3,
 		},
 	],

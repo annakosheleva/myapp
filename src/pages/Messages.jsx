@@ -37,7 +37,10 @@ const Messages = () => {
     const deleteMessage = (id) => {
         dispatch({
             type: DELETE_MESSAGE,
-            payload: id
+            payload: id,
+            meta: {
+                delay: 3000
+            }
         })
     }
 
@@ -72,7 +75,7 @@ const Messages = () => {
                     onChange={(e) => setTitle(e.target.value)} />
                 <Button variant="contained" size="large" fullWidth  onClick={addMessage}>Add message</Button>
             {messages.map((message) => (
-                <ListItem sx={{ margin: '10px 0 10px 0', width: '100%', maxWidth: 360, color: 'black', backgroundColor: '#fff', justifyContent: "space-between"}}>
+                <ListItem sx={{ margin: '10px 0 10px 0', width: '100%', maxWidth: 380, color: 'black', backgroundColor: '#fff', justifyContent: "space-between"}}>
                     <Typography>{message.title}</Typography>
                     <Button variant="contained" size="small" onClick={() => deleteMessage(message.id)}>X</Button> 
                 </ListItem>
