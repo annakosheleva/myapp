@@ -2,8 +2,10 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import storage from "redux-persist/lib/storage";
 import { chatsReducer } from "./reducers/chatsReducer/chatsReducer";
 import { messagesReducer } from "./reducers/messagesReducer/messagesReducer";
+import { postsReducer } from "./reducers/postsReducer/postsReducer";
 import { persistReducer } from "redux-persist";
 import persistStore from "redux-persist/es/persistStore";
+import thunk from "redux-thunk";
 
 const logger = (store) => (next) => (action) => {
 	console.log("dispatching", action);
@@ -37,12 +39,13 @@ const persistConfig = {
 const rootReducer = combineReducers({
 	chats: chatsReducer,
 	messages: messagesReducer,
+	posts: postsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = createStore(
 	persistedReducer,
-	applyMiddleware(logger, time)
+	applyMiddleware(thunk, logger, time)
 );
 export const persist = persistStore(store);
